@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { FiMail, FiLock } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from '../../hooks/auth';
+
 import { Container, Form, Background } from './styles';
 import { Input } from '../../components/input';
 import { Button } from '../../components/button';
+import { useAuth } from '../../hooks/auth.js';
 
 export function SignIn() {
     const [email, setEmail] = useState('');
