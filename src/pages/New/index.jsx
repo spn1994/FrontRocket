@@ -18,21 +18,21 @@ import { api } from '../../services/api.js';
 
 import { Container, Form } from './styles';
 
-export function New(){
+export function New (){
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   //estado começa com array vazio
-  const [ links, setLinks] = useState([]);
+  const [links, setLinks] = useState([]);
   //outro armazena link q vai ser add
   const [newLink, setNewLink] = useState("");
 
 
-  const [tags, setTags] = useState([]);  
+  const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
 
   const navigate = useNavigate();
-  function handleBack(){
+  function handleBack() {
     //-1 faz n carregar cash
     navigate(-1);
   }
@@ -46,7 +46,7 @@ export function New(){
   function handleRemoveLink(deleted) {
     setLinks(prevState => prevState.filter(link => link !== deleted));
   }
-  function handleAddTag(){
+  function handleAddTag() {
     setTags(prevState => [...prevState, newTag]);
     setNewTag("");
   }
@@ -55,13 +55,13 @@ export function New(){
   }
 
   async function handleNewNote() {
-    if (!title){
+    if (!title) {
       return alert("Digite o título da nota")
     }
-    if (newLink){
+    if (newLink) {
       return alert("Voce deixou um link no campo para adicionar, mas não clicou em adicionar. CLiquem em add ou deixe em branco")
     }
-    if (newTag){
+    if (newTag) {
       return alert("Voce deixou uma tag no campo para adicionar, mas não clicou em adicionar. CLique em add ou deixe em branco")
     }
 
@@ -70,13 +70,13 @@ export function New(){
       description,
       tags,
       links
-    } );
+    });
 
     alert("Nota criada com sucesso!")
     navigate(-1);
   }
 
-  return(
+  return (
     <Container>
       <Header />
 
@@ -86,21 +86,21 @@ export function New(){
             <h1>Criar nota</h1>
            
             <ButtonText 
-            title="Voltar"
-            onClick={handleBack}
-            />
+              title="Voltar"
+              onClick={handleBack}
+              />
           </header>
 
-          <Input 
-            placeholder="Título" 
+          <Input
+            placeholder="Título"
             onChange={e => setTitle(e.target.value)}
             />
+          
           <Textarea 
             placeholder="Observações"
             onChange={e => setDescription(e.target.value)}
 
           />
-
           <Section title="Links úteis">  
             {
               links.map((link, index) => (
@@ -111,15 +111,15 @@ export function New(){
                 onClick={() => handleRemoveLink(link)}
                 />
               ))
-            }        
+            }
             <NoteItem 
-            isNew 
-            placeholder="Novo Link"
-            value={newLink} 
-            onChange={e =>{setNewLink ( e.target.value)}}
-            onClick={handleAddLink}
-            />
-            
+              isNew 
+              placeholder="Novo Link"
+              value={newLink} 
+              onChange={e =>{setNewLink ( e.target.value)}}
+              onClick={handleAddLink}
+              />
+
           </Section>
 
           <Section title="Marcadores">
@@ -143,8 +143,8 @@ export function New(){
             </div>
           </Section>
           
-          <Button 
-            title="Salvar" 
+          <Button
+            title="Salvar"
             onClick={handleNewNote}
             />
         </Form>
